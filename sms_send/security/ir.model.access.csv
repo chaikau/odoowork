@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sms_send_user_read_config,sms_send.user read config,model_sms_send_config,sms_send.group_sms_send_user,1,0,0,0
+access_sms_send_manager_config,sms_send.manager modify config,model_sms_send_config,sms_send.group_sms_send_manager,1,1,1,1
+access_sms_send_user,sms_send.user send sms,model_sms_send_sender,sms_send.group_sms_send_user,1,1,1,1
+access_sms_send_manager,sms_send.manager send sms,model_sms_send_sender,sms_send.group_sms_send_manager,1,1,1,1
+access_sms_send_user,sms_send.user read log,model_sms_send_sendlog,sms_send.group_sms_send_user,1,0,1,0
+access_sms_send_manager,sms_send.manager read log,model_sms_send_sendlog,sms_send.group_sms_send_manager,1,1,1,1

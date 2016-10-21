@@ -1,0 +1,119 @@
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="sms_send.config_form">
+      <field name="name">sms_send sms send config form</field>
+      <field name="model">sms_send.config</field>
+      <field name="arch" type="xml">
+        <form string="短信发送配置">
+            <sheet>
+              <group>
+             <field name="name"/>
+             <field name="url"/>
+             <field name="username" groups="sms_send.group_sms_send_manager"/>
+             <field name="password" password="True" groups="sms_send.group_sms_send_manager"/>
+              </group>
+           </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="sms_send.config_tree">
+      <field name="name">sms_send sms send config form</field>
+      <field name="model">sms_send.config</field>
+      <field name="arch" type="xml">
+        <tree string="短信发送配置">
+             <field name="name"/>
+             <field name="url"/>
+             <field name="username" groups="sms_send.group_sms_send_manager"/>
+             <field name="password" password="True" groups="sms_send.group_sms_send_manager"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sms_send.sender_form">
+      <field name="name">短信发送</field>
+      <field name="model">sms_send.sender</field>
+      <field name="arch" type="xml">
+        <form string="发送短信">
+            <sheet>
+              <group>
+             <field name="config"/>
+             <field name="mobiles"/>
+             <field name="content"/>
+             <field name="suffix"/>
+             <field name="extnumber"/>
+             <field name="plansendtime"/>
+              </group>
+              <group>
+             <button type="object" name="send" string="发送"/>
+              </group>
+           </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sms_send.sendlog_tree">
+      <field name="name">sms_send.mam_sender_tree</field>
+      <field name="model">sms_send.sendlog</field>
+      <field name="arch" type="xml">
+        <tree string="发送记录">
+             <field name="create_date" string="短信创建时间"/>
+             <field name="logtype"/>
+             <field name="user_id"/>
+             <field name="config"/>
+             <field name="mobiles"/>
+             <field name="content"/>
+             <field name="extnumber"/>
+             <field name="plansendtime"/>
+             <field name="response"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sms_send.sendlog_form">
+      <field name="name">sms_send.mam_sender_from</field>
+      <field name="model">sms_send.sendlog</field>
+      <field name="arch" type="xml">
+        <form string="发送记录">
+            <sheet>
+              <group>
+             <field name="create_date" string="短信创建时间" read="True"/>
+             <field name="logtype"/>
+             <field name="user_id"/>
+             <field name="config"/>
+             <field name="mobiles" placeholder="多个手机号用“,”分隔"/>
+             <field name="content"/>
+             <field name="extnumber"/>
+             <field name="plansendtime"/>
+             <field name="response"/>
+              </group>
+           </sheet>
+        </form>
+      </field>
+    </record>
+
+  <record model="ir.actions.act_window" id="sms_send.action_window_sms_send_config">
+      <field name="name">短信发送配置</field>
+      <field name="res_model">sms_send.config</field>
+      <field name="view_mode">list,form</field>
+    </record>
+  <record model="ir.actions.act_window" id="sms_send.action_window_sender">
+      <field name="name">发送短信</field>
+      <field name="res_model">sms_send.sender</field>
+      <field name="view_mode">form</field>
+    </record>
+
+  <record model="ir.actions.act_window" id="sms_send.action_window_sendlog">
+      <field name="name">发送记录</field>
+      <field name="res_model">sms_send.sendlog</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="短信" id="sms_send.menu_root"/>
+
+    <menuitem name="短信发送" id="sms_send.sms" parent="sms_send.menu_root"/>
+
+    <menuitem name="发送短信" id="sms_send.menu_sms_list1" parent="sms_send.sms" action="sms_send.action_window_sender"/>
+    <menuitem name="发送记录" id="sms_send.menu_sms_list2" parent="sms_send.sms" action="sms_send.action_window_sendlog"/>
+    <menuitem name="发送配置" id="sms_send.menu_sms_list3" parent="sms_send.sms" action="sms_send.action_window_sms_send_config"/>
+  </data>
+</openerp>
